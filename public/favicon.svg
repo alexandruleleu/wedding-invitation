@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="wax" cx="36%" cy="28%" r="75%">
+      <stop offset="0" stop-color="#f96455"/>
+      <stop offset=".6" stop-color="#cb302b"/>
+      <stop offset="1" stop-color="#8c191f"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#wax)" stroke="#8c191f" stroke-width="2" d="M32 2C39 1 42 5 48 7S55 15 59 21S60 33 59 40S52 50 47 55S35 61 28 60S18 56 12 52S6 41 4 35S5 22 8 17S19 7 24 5S28 3 32 2Z"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="#ff9a7c" stroke-width="1.5" opacity=".8"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#8c191f" stroke-width="1" opacity=".7"/>
+  <g fill="#ffcfaa" stroke="#8c191f" stroke-width=".35">
+    <path d="M12 41v-2h2l7-18h3l7 18h2v2h-9v-2h2l-2-5h-7l-2 5h2v2Zm6-9h5l-2.5-7Z"/>
+    <path d="M34 41v-2h2l7-18h3l7 18h2v2h-9v-2h2l-2-5h-7l-2 5h2v2Zm6-9h5l-2.5-7Z"/>
+  </g>
+  <text x="32.5" y="38" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#ffcfaa">&amp;</text>
+</svg>
