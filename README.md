@@ -36,7 +36,7 @@ vercel --prod
 
 Web-optimized invitation artwork is in `public/images`. Original PDF and HEIC files remain outside the repository. Temporary rendering and browser-check files in `tmp/` are ignored.
 
-Fonts are served locally from `public/fonts`, with their SIL Open Font License files. The couple's names use the modern, rounded Quicksand; controls use DM Sans and the printed artwork remains unchanged. No external font requests are required.
+Fonts are served locally from `public/fonts`, with their SIL Open Font License files. The couple's names use Allura, matching the script font in the printed invitation; controls use DM Sans and the printed artwork remains unchanged. No external font requests are required.
 
 When closing, both panels finish folding before the wax seal settles back into place. A clear Romanian instruction points visitors to the red seal.
 
