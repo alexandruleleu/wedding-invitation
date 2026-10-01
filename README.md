@@ -36,9 +36,11 @@ vercel --prod
 
 Web-optimized invitation artwork is in `public/images`. Original PDF and HEIC files remain outside the repository. Temporary rendering and browser-check files in `tmp/` are ignored.
 
-Fonts are served locally from `public/fonts`, with their SIL Open Font License files. Website headings use the calm, readable DM Sans; the script in the printed artwork remains unchanged. No external font requests are required.
+Fonts are served locally from `public/fonts`, with their SIL Open Font License files. The couple's names use the modern, rounded Quicksand; controls use DM Sans and the printed artwork remains unchanged. No external font requests are required.
 
 When closing, both panels finish folding before the wax seal settles back into place. A clear Romanian instruction points visitors to the red seal.
+
+The seal gives a gentle, occasional wiggle while closed, pauses on hover/focus, and stays still for reduced-motion visitors. Both interior fold edges use matching soft shadows.
 
 ## Structure
 
@@ -50,5 +52,7 @@ When closing, both panels finish folding before the wax seal settles back into p
 - `public/`: artwork, fonts and their licenses, included in source control.
 
 Components use explicit typed props, stable data keys, native controls and top-level hooks. Animations run in CSS rather than React render loops. The cover branches are mirrored so their stems meet at the seal and their tips point outward.
+
+On phones the event cards stack, links have at least 44px tap areas, and the complete artwork can be opened separately for zooming. Readable HTML details accompany the scaled printed invitation.
 
 The printed artwork stays intact. Event text is also available as semantic HTML, so details remain readable on phones and accessible to screen readers. Map links search by the venue names supplied in the invitation; they are not verified street-address pins.

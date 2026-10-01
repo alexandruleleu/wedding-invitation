@@ -19,6 +19,7 @@ export function InvitationControls({ isOpen, onClose }: InvitationControlsProps)
         <div className="open-actions">
           <a className="details-link" href="#wedding-details">Descoperă ziua noastră <span aria-hidden="true">↓</span></a>
           <button className="replay-button" type="button" onClick={onClose}>Închide invitația <span aria-hidden="true">↶</span></button>
+          <a className="artwork-link" href="/images/invitation-inside.webp" target="_blank" rel="noreferrer">Mărește invitația <span aria-hidden="true">↗</span></a>
         </div>
       ) : null}
     </div>
