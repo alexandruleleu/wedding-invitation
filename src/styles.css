@@ -35,7 +35,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid #e9d5a8; outline-offs
   background: radial-gradient(ellipse at 50% 28%, #52615b50, transparent 62%), linear-gradient(160deg, #243c39, #172b2b 80%);
 }
 .page-heading { position: relative; z-index: 2; text-align: center; margin-bottom: 30px; }
-.eyebrow { margin: 0; font-size: 9px; font-weight: 400; line-height: 1.8; letter-spacing: .24em; text-transform: uppercase; }
 h1 { margin: 24px 0 17px; font: 400 clamp(42px, 5.2vw, 68px)/1.25 'Allura', cursive; letter-spacing: 0; }
 h1 > span { margin-inline: 8px; color: #d7c7a7; }
 .wedding-date { margin: 0; color: var(--muted); font: 400 17px 'Cormorant Garamond', Georgia, serif; letter-spacing: .12em; }
@@ -121,7 +120,6 @@ h1 > span { margin-inline: 8px; color: #d7c7a7; }
 @media (max-width: 600px) {
   .invitation-page { padding: 74px 20px 22px; }
   .page-heading { margin-bottom: 28px; }
-  .page-heading .eyebrow { max-width: 300px; margin-inline: auto; font-size: 10px; letter-spacing: .15em; }
   h1 { font-size: clamp(32px, 9.5vw, 48px); margin: 22px 0 17px; }
   h1 > span { margin-inline: 3px; }
   .wedding-date { font-size: 17px; }
