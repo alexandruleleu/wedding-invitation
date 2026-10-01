@@ -1,34 +1,39 @@
 import { wedding } from '../data/wedding'
 
+// Amouria hosts two events; show its map once rather than repeating the venue.
+const venues = wedding.events
+  .filter((event, index, events) => events.findIndex(other => other.mapUrl === event.mapUrl) === index)
+  .map(event => ({
+    name: event.venue,
+    mapUrl: event.mapUrl,
+    events: wedding.events.filter(other => other.mapUrl === event.mapUrl),
+  }))
+
 export function EventDetails({ isOpen }: { isOpen: boolean }) {
   return (
     <section className="event-details" id="wedding-details" aria-labelledby="details-heading" hidden={!isOpen}>
-      <p className="eyebrow">{wedding.tagline}</p>
-      <h2 id="details-heading"><time dateTime={wedding.date.iso}>{wedding.date.label}</time></h2>
-      <p className="wedding-story">
-        {wedding.introduction.map(line => <span className="text-line" key={line}>{line}</span>)}
-      </p>
+      <h2 className="visually-hidden" id="details-heading">Locații și contact</h2>
+      <div className="visually-hidden">
+        <p>{wedding.introduction.join(' ')}</p>
+        <p>Împreună cu părinții {wedding.parents.join(' și ')} și nașii lor, {wedding.godparents}, {wedding.invitation}</p>
+      </div>
       <div className="event-grid">
-        {wedding.events.map(event => (
-          <article key={event.id}>
-            <time className="event-time" dateTime={event.time}>{event.time}</time>
-            <h3>{event.title}</h3>
-            <p>{event.venue}</p>
-            <a href={event.mapUrl} target="_blank" rel="noreferrer">Vezi locația <span aria-hidden="true">↗</span></a>
+        {venues.map(venue => (
+          <article key={venue.mapUrl}>
+            <h3>{venue.name}</h3>
+            <p>{venue.events.map(event => event.title).join(' · ')}</p>
+            <ul className="visually-hidden">
+              {venue.events.map(event => <li key={event.id}>{event.title}: <time dateTime={event.time}>{event.time}</time></li>)}
+            </ul>
+            <a href={venue.mapUrl} target="_blank" rel="noreferrer" aria-label={`Vezi locația: ${venue.name}`}>Vezi locația <span aria-hidden="true">↗</span></a>
           </article>
         ))}
       </div>
-      <div className="family-note">
-        <p>Împreună cu părinții</p>
-        <p>{wedding.parents.map(names => <span className="text-line" key={names}>{names}</span>)}</p>
-        <p>și nașii lor, <strong>{wedding.godparents}</strong>,<br />{wedding.invitation}</p>
-      </div>
       <section className="rsvp" aria-labelledby="rsvp-heading">
-        <span aria-hidden="true" className="tiny-heart">♡</span>
-        <h3 id="rsvp-heading">Confirmarea prezenței</h3>
-        <p>Vă rugăm să confirmați prezența până la <strong><time dateTime={wedding.rsvpDeadline.iso}>{wedding.rsvpDeadline.label}</time></strong>.</p>
+        <h3 id="rsvp-heading">Confirmă prezența</h3>
+        <p className="visually-hidden">Vă rugăm să confirmați prezența până la <time dateTime={wedding.rsvpDeadline.iso}>{wedding.rsvpDeadline.label}</time>.</p>
         <div className="phone-links">
-          {wedding.contacts.map(contact => <a key={contact.telephone} href={`tel:${contact.telephone}`}>{contact.display}</a>)}
+          {wedding.contacts.map(contact => <a key={contact.telephone} href={`tel:${contact.telephone}`} aria-label={`Sună la ${contact.display}`}>{contact.display}</a>)}
         </div>
       </section>
     </section>

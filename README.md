@@ -4,7 +4,7 @@ A small responsive React + TypeScript invitation, built with Vite and prepared f
 
 An interactive version of Andreea and Alexandru's printed invitation for 9 January 2027. The two sides fold outward from a red A&A wax seal. The original winter artwork and branches come from the supplied two-page PDF; the seal comes from the couple's photo.
 
-Gentle CSS snowfall can be paused. Reduced-motion preferences disable snowfall and folding transitions. The open invitation includes readable Romanian details, venue search links and tap-to-call RSVP contacts for mobile visitors.
+Gentle CSS snowfall can be paused. Reduced-motion preferences disable snowfall and folding transitions. Below the open invitation, a compact panel contains two unique venue links and tap-to-call RSVP contacts, without repeating the printed invitation text or a closing message.
 
 ## Local setup
 
@@ -55,4 +55,4 @@ Components use explicit typed props, stable data keys, native controls and top-l
 
 On phones the event cards stack, links have at least 44px tap areas, and the complete artwork can be opened separately for zooming. Readable HTML details accompany the scaled printed invitation.
 
-The printed artwork stays intact. Event text is also available as semantic HTML, so details remain readable on phones and accessible to screen readers. Map links search by the venue names supplied in the invitation; they are not verified street-address pins.
+The printed artwork stays intact and can be opened separately for zooming on phones. The full invitation text and event times remain available as screen-reader-only semantic HTML without adding visible repetition or scroll height. Map links search by the venue names supplied in the invitation; they are not verified street-address pins.
