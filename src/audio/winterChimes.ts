@@ -1,22 +1,26 @@
-// An original, sparse pentatonic score. Native audio rendering keeps work off
-// the React render loop and avoids downloading a track or calling a service.
+// Original, warm pentatonic winter tones: lower pitches, slow attacks and
+// overlapping fades instead of bright, percussive bells. Rendered only once.
 const notes = [
-  [0.4, 392], [4.2, 587.33], [8.3, 493.88], [12.1, 440],
-  [16.3, 659.25], [20.2, 587.33], [24.5, 392], [28.3, 493.88],
-  [32.2, 440], [36.4, 659.25], [40.2, 587.33], [44.1, 493.88],
-  [48.3, 392], [52.1, 440],
+  [0.6, 196], [6, 293.66], [11.4, 246.94], [16.8, 220],
+  [22.2, 293.66], [27.6, 196], [33, 246.94], [38.4, 220],
+  [43.8, 293.66], [49.2, 196],
+] as const
+
+const voices = [
+  { ratio: 1, level: 0.42, attack: 1.4, decay: 9 },
+  { ratio: 2, level: 0.035, attack: 1.8, decay: 6.5 },
 ] as const
 
 async function renderChimes(sampleRate: number): Promise<AudioBuffer> {
   const offline = new OfflineAudioContext(1, sampleRate * 60, sampleRate)
   for (const [start, frequency] of notes) {
-    for (const [ratio, level, decay] of [[1, 0.5, 4.8], [2, 0.13, 2.2], [2.76, 0.025, 1.1]]) {
+    for (const { ratio, level, attack, decay } of voices) {
       const oscillator = offline.createOscillator()
       const envelope = offline.createGain()
       oscillator.type = 'sine'
       oscillator.frequency.value = frequency * ratio
       envelope.gain.setValueAtTime(0, start)
-      envelope.gain.linearRampToValueAtTime(level, start + 0.05)
+      envelope.gain.linearRampToValueAtTime(level, start + attack)
       envelope.gain.exponentialRampToValueAtTime(0.0001, start + decay)
       envelope.gain.linearRampToValueAtTime(0, start + decay + 0.15)
       oscillator.connect(envelope).connect(offline.destination)
@@ -43,7 +47,7 @@ export class WinterChimes {
     }
     this.context = new AudioContextConstructor()
     this.master = this.context.createGain()
-    this.master.gain.value = 0.08
+    this.master.gain.value = 0.06
     this.master.connect(this.context.destination)
   }
 

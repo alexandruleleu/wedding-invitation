@@ -15,7 +15,7 @@ npm run dev
 
 ## Background sound
 
-The optional original winter chimes start only after tapping the seal or sound button, not on page load. They are synthesized locally with native Web Audio, softly looped, and require no audio download or external service. The mute button preserves the visitor's choice when reopening the invitation. Moving the page into the background pauses playback; visitors can resume it explicitly. Unsupported browsers keep the invitation working silently.
+The optional original winter ambience starts only after tapping the seal or sound button, not on page load. Lower, warm pentatonic tones arrive slowly with 1.4–1.8 second attacks and long overlapping fades, without sharp bell strikes or dissonant overtones. It is synthesized locally with native Web Audio, quietly looped, and requires no audio download or external service. The mute button preserves the visitor's choice when reopening the invitation. Moving the page into the background pauses playback; visitors can resume it explicitly. Unsupported browsers keep the invitation working silently.
 
 The audio engine in `src/audio/winterChimes.ts` owns rendering/playback; `src/hooks/useWinterChimes.ts` owns React state and lifecycle cleanup; `SoundControl` is a native accessible toggle. A sparse score is rendered once per visit, and playback does not drive React render loops.
 
@@ -40,7 +40,7 @@ vercel --prod
 
 ## Sharing previews
 
-Share `https://wedding-invitation-two-nu-64.vercel.app/wedding-details`. Vercel rewrites that exact route to the app HTML; opening or refreshing it starts with the sealed invitation, and the original root URL still works. Static assets are not included in the rewrite. The canonical and Open Graph URLs use this readable path.
+Share `https://wedding-invitation-two-nu-64.vercel.app/wedding-details`. Vercel rewrites that exact route to the app HTML; opening or refreshing it starts with the sealed invitation. The original root URL permanently redirects to `/wedding-details`, so existing links keep working and the address bar uses the readable route. Static assets are not included in the rewrite or redirect. The canonical and Open Graph URLs use this readable path. Vite's local preview also serves `/wedding-details`, but the server-side redirect is applied on Vercel.
 
 The initial HTML contains Open Graph and large-image card metadata, so link preview crawlers do not need to execute React or capture the animation. `public/images/share-preview-v1.png` is a static 1200 × 630 card using the invitation artwork, names, date and seal. Its editable source is `scripts/share-preview.html`.
 
