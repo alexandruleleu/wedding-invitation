@@ -4,7 +4,8 @@
   "outputDirectory": "dist",
   "trailingSlash": false,
   "redirects": [
-    { "source": "/", "destination": "/wedding-details", "permanent": true }
+    { "source": "/", "destination": "/wedding-details", "permanent": true },
+    { "source": "/images/share-preview-v1.png", "destination": "/images/share-preview-v2.png", "permanent": true }
   ],
   "rewrites": [
     { "source": "/wedding-details", "destination": "/index.html" }
