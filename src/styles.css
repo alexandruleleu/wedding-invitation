@@ -68,7 +68,7 @@ h1 > span { margin-inline: 8px; color: #d7c7a7; font-family: 'Cormorant Garamond
 .is-open .fold-left { transform: rotateY(-180deg); }
 .is-open .fold-right { transform: rotateY(180deg); }
 
-.wax-seal { position: absolute; z-index: 6; left: 50%; top: 53%; transform: translate(-50%, -50%) rotate(-8deg); width: 20%; max-width: 116px; min-width: 60px; padding: 0; aspect-ratio: 400 / 414; background: transparent; border: 0; filter: drop-shadow(2px 5px 5px #260c0645); transition: transform 450ms cubic-bezier(.2,.8,.3,1) 1.8s, opacity 180ms ease 1.8s, visibility 0s 1.8s; }
+.wax-seal { position: absolute; z-index: 6; left: 50%; top: 53%; transform: translate(-50%, -50%) rotate(-8deg); width: clamp(44px, 12%, 116px); padding: 0; aspect-ratio: 400 / 414; background: transparent; border: 0; filter: drop-shadow(2px 5px 5px #260c0645); transition: transform 450ms cubic-bezier(.2,.8,.3,1) 1.8s, opacity 180ms ease 1.8s, visibility 0s 1.8s; }
 .wax-seal img { display: block; width: 100%; height: auto; clip-path: ellipse(48% 47% at 50% 51%); }
 .wax-seal img { transform-origin: 50% 55%; animation: seal-wiggle 5.5s ease-in-out 2.5s infinite; }
 @keyframes seal-wiggle { 0%, 8%, 100% { transform: rotate(0); } 2% { transform: rotate(-5deg); } 4% { transform: rotate(5deg); } 6% { transform: rotate(-3deg); } }
@@ -133,8 +133,8 @@ footer span { margin-left: 12px; color: #d6c3a0; }
   .snow-control { top: 15px; right: 14px; }
   .gatefold { width: 200%; margin-left: -50%; transition: width 1.6s ease, margin-left 1.6s ease; }
   .is-open .gatefold { width: 100%; margin-left: 0; }
-  .wax-seal { width: 14%; max-width: 94px; min-width: 46px; }
-  .is-open .wax-seal { min-width: 0; }
+  /* The closed gatefold is twice the cover width: 11% keeps the seal at 22% of the cover. */
+  .wax-seal { width: clamp(44px, 11%, 116px); }
   .invitation-actions { margin-top: 24px; }
   .opening-hint { font-size: 16px; }
   .opening-hint strong, .opening-hint > span:not(.hint-arrow) { font-size: 16px; }
