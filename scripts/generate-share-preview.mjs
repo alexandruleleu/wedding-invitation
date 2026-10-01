@@ -15,7 +15,6 @@ const previewContent = {
   names: `${wedding.couple.first} & ${wedding.couple.second}`,
   date: wedding.date.label,
   city: wedding.city,
-  tagline: wedding.tagline,
 }
 const escapeHtml = value => value.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character])
 
@@ -48,8 +47,8 @@ try {
   await browser('open', url)
   await browser('wait', '--load', 'networkidle')
   await browser('eval', '(async () => { await document.fonts.ready; await Promise.all([...document.images].map(image => image.decode())); return "ready"; })()')
-  await browser('screenshot', join(projectRoot, 'public/images/share-preview-v1.png'))
-  console.log('Created public/images/share-preview-v1.png (1200 × 630).')
+  await browser('screenshot', join(projectRoot, 'public/images/share-preview-v2.png'))
+  console.log('Created public/images/share-preview-v2.png (1200 × 630).')
 } finally {
   await browser('close').catch(() => {})
   server.closeAllConnections()
