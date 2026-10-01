@@ -8,7 +8,7 @@ export function SoundControl({ isPlaying, isUnavailable, onToggle }: SoundContro
   return (
     <button className="sound-control" type="button" onClick={onToggle}
       aria-pressed={isPlaying} disabled={isUnavailable}
-      title="Sunet de iarnă calm, cu note calde și estompate. Începe doar după o atingere.">
+      title="O melodie de iarnă veselă și delicată. Începe doar după o atingere.">
       <span aria-hidden="true">♪</span>
       {isUnavailable ? 'Sunet indisponibil' : isPlaying ? 'Oprește sunetul' : 'Pornește sunetul'}
     </button>

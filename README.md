@@ -15,9 +15,9 @@ npm run dev
 
 ## Background sound
 
-The optional original winter ambience starts only after tapping the seal or sound button, not on page load. Lower, warm pentatonic tones arrive slowly with 1.4–1.8 second attacks and long overlapping fades, without sharp bell strikes or dissonant overtones. It is synthesized locally with native Web Audio, quietly looped, and requires no audio download or external service. The mute button preserves the visitor's choice when reopening the invitation. Moving the page into the background pauses playback; visitors can resume it explicitly. Unsupported browsers keep the invitation working silently.
+The optional original winter melody starts only after tapping the seal or sound button, not on page load. A cheerful C-major waltz combines a lilting melody with soft chord accompaniment and rounded, music-box-like tones. The final note resolves to the tonic and fades into a short breath before the 33-second loop repeats. It is synthesized locally with native Web Audio at quiet volume, and requires no audio download or external service. The mute button preserves the visitor's choice when reopening the invitation. Moving the page into the background pauses playback; visitors can resume it explicitly. Unsupported browsers keep the invitation working silently.
 
-The audio engine in `src/audio/winterChimes.ts` owns rendering/playback; `src/hooks/useWinterChimes.ts` owns React state and lifecycle cleanup; `SoundControl` is a native accessible toggle. A sparse score is rendered once per visit, and playback does not drive React render loops.
+The audio engine in `src/audio/winterChimes.ts` owns rendering/playback; `src/hooks/useWinterChimes.ts` owns React state and lifecycle cleanup; `SoundControl` is a native accessible toggle. The original score is rendered once per visit, and playback does not drive React render loops.
 
 ## Checks
 
