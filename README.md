@@ -4,7 +4,7 @@ A small responsive React + TypeScript invitation, built with Vite and prepared f
 
 An interactive version of Andreea and Alexandru's printed invitation for 9 January 2027. The two sides fold outward from a red A&A wax seal. The original winter artwork and branches come from the supplied two-page PDF; the seal comes from the couple's photo.
 
-Gentle CSS snowfall can be paused. Reduced-motion preferences disable snowfall and folding transitions. Below the open invitation, a compact panel contains two unique venue links and tap-to-call RSVP contacts, without repeating the printed invitation text or a closing message.
+Gentle CSS snowfall can be paused. Reduced-motion preferences disable snowfall and folding transitions. Below the open invitation, a compact panel contains two unique venue links, the visible RSVP deadline and tap-to-call contacts, without repeating the full printed invitation text or a closing message.
 
 ## Local setup
 
@@ -12,6 +12,12 @@ Gentle CSS snowfall can be paused. Reduced-motion preferences disable snowfall a
 npm ci
 npm run dev
 ```
+
+## Background sound
+
+The optional original winter chimes start only after tapping the seal or sound button, not on page load. They are synthesized locally with native Web Audio, softly looped, and require no audio download or external service. The mute button preserves the visitor's choice when reopening the invitation. Moving the page into the background pauses playback; visitors can resume it explicitly. Unsupported browsers keep the invitation working silently.
+
+The audio engine in `src/audio/winterChimes.ts` owns rendering/playback; `src/hooks/useWinterChimes.ts` owns React state and lifecycle cleanup; `SoundControl` is a native accessible toggle. A sparse score is rendered once per visit, and playback does not drive React render loops.
 
 ## Checks
 
@@ -31,6 +37,14 @@ Alternatively, from this folder with the Vercel CLI authenticated:
 vercel link
 vercel --prod
 ```
+
+## Sharing previews
+
+Share `https://wedding-invitation-two-nu-64.vercel.app/wedding-details`. Vercel rewrites that exact route to the app HTML; opening or refreshing it starts with the sealed invitation, and the original root URL still works. Static assets are not included in the rewrite. The canonical and Open Graph URLs use this readable path.
+
+The initial HTML contains Open Graph and large-image card metadata, so link preview crawlers do not need to execute React or capture the animation. `public/images/share-preview-v1.png` is a static 1200 × 630 card using the invitation artwork, names, date and seal. Its editable source is `scripts/share-preview.html`.
+
+To regenerate it, use Node 22.18+ or 24+, install the `agent-browser` CLI and its browser, then run `npm run generate:share-preview`. The generator reads names/date/city/tagline from `src/data/wedding.ts`, serves only its template and local assets on a temporary loopback port, waits for fonts and images, saves the PNG and closes the browser/server. The image is committed, so production builds do not require the generator. Update the canonical and metadata URLs in `index.html` if the production domain changes. Messaging apps control preview rendering and caching; old messages may retain their previous preview.
 
 ## Artwork
 

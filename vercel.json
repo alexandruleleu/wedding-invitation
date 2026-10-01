@@ -1,5 +1,9 @@
 {
   "framework": "vite",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/wedding-details", "destination": "/index.html" }
+  ]
 }

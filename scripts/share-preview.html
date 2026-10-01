@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{names}} — imagine pentru distribuire</title>
+    <style>
+      @font-face { font-family: Allura; src: url('/fonts/allura-regular.ttf'); }
+      @font-face { font-family: Cormorant; src: url('/fonts/cormorant-regular.ttf'); }
+      @font-face { font-family: 'DM Sans'; src: url('/fonts/dm-sans-regular.ttf'); }
+      * { box-sizing: border-box; }
+      body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: radial-gradient(ellipse at 50% 30%, #49605a, #172b2b); }
+      .snow { position: absolute; inset: 0; background-image: radial-gradient(circle at 3% 14%, #ffffff80 2px, transparent 4px), radial-gradient(circle at 8% 80%, #ffffff50 2px, transparent 4px), radial-gradient(circle at 40% 6%, #ffffff90 2px, transparent 4px), radial-gradient(circle at 82% 93%, #ffffff80 2px, transparent 4px), radial-gradient(circle at 95% 22%, #ffffff80 2px, transparent 4px), radial-gradient(circle at 91% 62%, #ffffff60 2px, transparent 3px), radial-gradient(circle at 20% 92%, #ffffff50 1px, transparent 3px); }
+      .paper { position: absolute; inset: 50px 80px; background: #f8f1e3; box-shadow: 0 20px 60px #07191965; }
+      .wing { position: absolute; top: 0; bottom: 0; width: 50%; background: #f8f1e3 url('/images/invitation-outside.webp') no-repeat; background-size: 280% 100%; transform: scaleX(-1); }
+      .left { left: 0; background-position: left center; }
+      .right { right: 0; background-position: right center; }
+      .crease { position: absolute; inset: 0 50% 0 auto; width: 1px; box-shadow: 1px 0 5px #69563530; background: #69563512; }
+      .copy { position: absolute; top: 33px; left: 0; right: 0; text-align: center; color: #8c191f; }
+      .eyebrow { margin: 0; font: 13px 'DM Sans', sans-serif; letter-spacing: .3em; }
+      h1 { margin: 15px 0 4px; font: 400 86px/1.1 Allura, cursive; }
+      .date { margin: 0; font: 30px Cormorant, serif; letter-spacing: .08em; }
+      .seal { position: absolute; width: 145px; top: 53%; left: 50%; transform: translate(-50%, -50%) rotate(-8deg); clip-path: ellipse(48% 47% at 50% 51%); }
+      .tagline { position: absolute; bottom: 33px; left: 0; right: 0; margin: 0; color: #8c191f; text-align: center; font: 23px Cormorant, serif; }
+    </style>
+  </head>
+  <body>
+    <div class="snow"></div>
+    <div class="paper">
+      <div class="wing left"></div>
+      <div class="wing right"></div>
+      <div class="crease"></div>
+      <div class="copy">
+        <p class="eyebrow">INVITAȚIE LA NUNTĂ</p>
+        <h1>{{names}}</h1>
+        <p class="date">{{date}} · {{city}}</p>
+      </div>
+      <img class="seal" src="/images/wax-seal.webp" alt="Sigiliul roșu A&amp;A" />
+      <p class="tagline">{{tagline}}</p>
+    </div>
+  </body>
+</html>

@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { wedding } from '../data/wedding'
 
 // Amouria hosts two events; show its map once rather than repeating the venue.
@@ -31,9 +32,14 @@ export function EventDetails({ isOpen }: { isOpen: boolean }) {
       </div>
       <section className="rsvp" aria-labelledby="rsvp-heading">
         <h3 id="rsvp-heading">Confirmă prezența</h3>
-        <p className="visually-hidden">Vă rugăm să confirmați prezența până la <time dateTime={wedding.rsvpDeadline.iso}>{wedding.rsvpDeadline.label}</time>.</p>
+        <p className="rsvp-deadline">până la <strong><time dateTime={wedding.rsvpDeadline.iso}>{wedding.rsvpDeadline.label}</time></strong></p>
         <div className="phone-links">
-          {wedding.contacts.map(contact => <a key={contact.telephone} href={`tel:${contact.telephone}`} aria-label={`Sună la ${contact.display}`}>{contact.display}</a>)}
+          {wedding.contacts.map((contact, index) => (
+            <Fragment key={contact.telephone}>
+              {index > 0 ? <span className="phone-separator" aria-hidden="true">·</span> : null}
+              <a href={`tel:${contact.telephone}`} aria-label={`Sună la ${contact.display}`}>{contact.display}</a>
+            </Fragment>
+          ))}
         </div>
       </section>
     </section>
